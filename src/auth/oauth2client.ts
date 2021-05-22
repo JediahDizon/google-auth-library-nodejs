@@ -1252,36 +1252,36 @@ export class OAuth2Client extends AuthClient {
 
     const now = new Date().getTime() / 1000;
 
-    if (exp >= now + maxExpiry) {
-      throw new Error(
-        'Expiration time too far in future: ' + JSON.stringify(payload)
-      );
-    }
+    // if (exp >= now + maxExpiry) {
+    //   throw new Error(
+    //     'Expiration time too far in future: ' + JSON.stringify(payload)
+    //   );
+    // }
 
-    const earliest = iat - OAuth2Client.CLOCK_SKEW_SECS_;
-    const latest = exp + OAuth2Client.CLOCK_SKEW_SECS_;
+    // const earliest = iat - OAuth2Client.CLOCK_SKEW_SECS_;
+    // const latest = exp + OAuth2Client.CLOCK_SKEW_SECS_;
 
-    if (now < earliest) {
-      throw new Error(
-        'Token used too early, ' +
-          now +
-          ' < ' +
-          earliest +
-          ': ' +
-          JSON.stringify(payload)
-      );
-    }
+    // if (now < earliest) {
+    //   throw new Error(
+    //     'Token used too early, ' +
+    //       now +
+    //       ' < ' +
+    //       earliest +
+    //       ': ' +
+    //       JSON.stringify(payload)
+    //   );
+    // }
 
-    if (now > latest) {
-      throw new Error(
-        'Token used too late, ' +
-          now +
-          ' > ' +
-          latest +
-          ': ' +
-          JSON.stringify(payload)
-      );
-    }
+    // if (now > latest) {
+    //   throw new Error(
+    //     'Token used too late, ' +
+    //       now +
+    //       ' > ' +
+    //       latest +
+    //       ': ' +
+    //       JSON.stringify(payload)
+    //   );
+    // }
 
     if (issuers && issuers.indexOf(payload.iss) < 0) {
       throw new Error(
